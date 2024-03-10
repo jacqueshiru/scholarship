@@ -27,7 +27,7 @@ html {
   grid-gap: 5px;
 }
 
-.grid-3 {
+.grid-3, body section:nth-of-type(1) .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 5px;
@@ -87,7 +87,7 @@ html {
   grid-gap: 5px;
 }
 
-.flex-column, .x-end, .x-start, .y-end, .y-start {
+.flex-column, body section:nth-of-type(1) .cards .card, body section, .x-end, .x-start, .y-end, .y-start {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -99,7 +99,7 @@ html {
   justify-content: space-between;
 }
 
-.y-start {
+.y-start, body section:nth-of-type(1) .cards .card, body section {
   justify-content: flex-start;
 }
 
@@ -225,7 +225,7 @@ html {
   background-color: rgba(230, 230, 230, 0.9333333333);
 }
 
-.shadowed, .google-btn {
+.shadowed, body section:nth-of-type(3) form textarea, body section:nth-of-type(3) form input, .google-btn {
   box-shadow: inset 1px 1px rgba(255, 255, 255, 0.478), inset -1px -1px rgba(255, 255, 255, 0.132), 1px 3px 24px -1px rgba(0, 0, 0, 0.27);
 }
 
@@ -524,7 +524,7 @@ html {
   color: #777777;
 }
 
-.txt-gradient, body header nav ul li a:hover {
+.txt-gradient, body section:nth-of-type(1) .cards .card h1, body section:nth-of-type(1) .cards .card i, body header nav ul li a:hover {
   background: linear-gradient(-20deg, #18b1f8, #e94383);
   -webkit-background-clip: text;
   color: transparent;
@@ -638,7 +638,7 @@ body {
   overflow-x: hidden;
 }
 body header {
-  height: 60px;
+  height: 50px;
   width: 100%;
   background: linear-gradient(45deg, #03567d, #011219);
   display: inline-flex;
@@ -687,7 +687,7 @@ body main {
 body main .container {
   width: 100%;
   height: 100%;
-  background-color: rgba(2, 52, 75, 0.8);
+  background-color: rgba(2, 52, 75, 0.7);
   -webkit-backdrop-filter: blur(4px);
           backdrop-filter: blur(4px);
 }
@@ -705,6 +705,81 @@ body main .container .showcase h1 {
   font-size: 50px;
 }
 body main .container .showcase p {
-  font-size: 13px;
+  font-size: 15px;
   text-transform: lowercase;
+}
+body section {
+  height: 100vh;
+  width: 100%;
+  padding: 1%;
+}
+body section:nth-of-type(1) {
+  height: 65vh;
+  background-color: white;
+}
+body section:nth-of-type(1) .cards {
+  height: 50%;
+  width: 95%;
+  border-radius: 10px;
+  padding: 1%;
+  margin-bottom: 2%;
+}
+body section:nth-of-type(1) .cards .card {
+  text-align: center;
+}
+body section:nth-of-type(1) .cards .card i {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+body section:nth-of-type(1) .cards .card h1 {
+  font-weight: 300;
+}
+body section:nth-of-type(1) .cards .card p {
+  font-size: 15px;
+  width: 76%;
+  opacity: 0.6;
+  margin-top: 15px;
+}
+body section:nth-of-type(2) {
+  height: 100vh;
+  width: 100%;
+}
+body section:nth-of-type(2) * {
+  margin-bottom: 5%;
+}
+body section:nth-of-type(2) p {
+  width: 90%;
+  text-align: center;
+  font-size: 15px;
+  line-height: 20px;
+}
+body section:nth-of-type(3) {
+  text-align: center;
+}
+body section:nth-of-type(3) form {
+  margin-top: 3%;
+  width: 60%;
+}
+body section:nth-of-type(3) form input {
+  width: 90%;
+  padding: 2%;
+  margin-bottom: 5%;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  height: 50px;
+}
+body section:nth-of-type(3) form textarea {
+  height: 90px;
+  width: 90%;
+  padding: 2%;
+  margin-bottom: 5%;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+body section:nth-of-type(3) form input:nth-of-type(3) {
+  border: none;
+  box-shadow: none;
 }/*# sourceMappingURL=main.css.map */
