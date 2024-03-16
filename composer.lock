@@ -1,0 +1,57 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "8e9d3d2d338364b2df488f4d5adba00c",
+    "packages": [
+        {
+            "name": "astianmuchui/pixelsequel",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/astianmuchui/PixelSequel.git",
+                "reference": "e30ebb97eeee2c4be47893ab3e71fa2754b69c67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/astianmuchui/PixelSequel/zipball/e30ebb97eeee2c4be47893ab3e71fa2754b69c67",
+                "reference": "e30ebb97eeee2c4be47893ab3e71fa2754b69c67",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PixelSequel\\Model\\": "src/Model",
+                    "PixelSequel\\Schema\\": "src/Schema"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "astianmuchui",
+                    "email": "astianmuchui@gmail.com"
+                }
+            ],
+            "description": "A Lightweight PHP ORM",
+            "support": {
+                "issues": "https://github.com/astianmuchui/PixelSequel/issues",
+                "source": "https://github.com/astianmuchui/PixelSequel/tree/main"
+            },
+            "time": "2024-02-11T10:41:16+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.6.0"
+}

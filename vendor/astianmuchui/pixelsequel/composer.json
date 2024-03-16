@@ -1,0 +1,21 @@
+{
+    "name": "astianmuchui/pixelsequel",
+    "description": "A Lightweight PHP ORM",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "astianmuchui",
+            "email": "astianmuchui@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "PixelSequel\\Model\\": "src/Model",
+            "PixelSequel\\Schema\\": "src/Schema"
+        }
+    },
+
+    "minimum-stability": "dev",
+    "require": {}
+}

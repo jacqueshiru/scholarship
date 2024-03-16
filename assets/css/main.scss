@@ -49,7 +49,7 @@ body
 
                     a
                     {
-                        font-size: 14px;
+                        font-size: 12px;
                         color: #fff;
 
                         &:hover
@@ -208,6 +208,79 @@ body
                     box-shadow: none;
                 }
             }
+        }
+    }
+
+    .form-container
+    {
+        width: 100%;
+        height: 100vh;
+        @extend .flex-column;
+
+        h1
+        {
+            margin-top: 5%;
+            font-size: 40px;
+            color: darken($primary-color, 10);
+        }
+
+        p
+        {
+            width: 90%;
+            text-align: center;
+            font-size: 15px;
+            line-height: 20px;
+            margin-bottom: 5%;
+        }
+
+        form
+        {
+            width: 45%;
+            margin-top: 7.5%;
+            @extend .shadowed, .flex-column, .y-start, .x-start;
+            border-radius: 10px;
+            padding: 2% 2% 7% 2%;
+
+            h1
+            {
+                @extend .txt-gradient;
+                margin-bottom: 5%;
+                font-size: 30px;
+            }
+            input, select
+            {
+                background-color: transparent;
+                width: 95%;
+                padding: 2%;
+                margin-bottom: 5%;
+                border-radius: 10px;
+                border: none;
+                outline: none;
+                height: 40px;
+                border-bottom: 1px solid #00000035;
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 0px;
+                text-transform: none;
+
+            }
+
+            input:last-of-type
+            {
+                @extend .btn-gradient;
+            }
+            textarea
+            {
+                height: 90px;
+                width: 90%;
+                padding: 2%;
+                margin-bottom: 5%;
+                border-radius: 5px;
+                border: none;
+                outline: none;
+                border-radius: 10px;
+                @extend .shadowed;
+            }
+
         }
     }
 }
