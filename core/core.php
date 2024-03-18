@@ -23,7 +23,7 @@ final class FileHandler implements MediaHandler
     }
     public static function Upload ( $file, string $folder="", $tmp="",array $formats=[])
     {
-            
+
         $filename = basename($file);
         $path = $folder.$filename;
         $extension = pathinfo($path,PATHINFO_EXTENSION);
@@ -38,7 +38,7 @@ final class FileHandler implements MediaHandler
                 }
                 else
                 {
-                    
+
                     return false;
                 }
             }

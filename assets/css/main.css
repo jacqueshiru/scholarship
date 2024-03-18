@@ -527,6 +527,7 @@ html {
 .txt-gradient, body .form-container form h1, body section:nth-of-type(1) .cards .card h1, body section:nth-of-type(1) .cards .card i, body header nav ul li a:hover {
   background: linear-gradient(-20deg, #18b1f8, #e94383);
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   letter-spacing: 1px;
 }
@@ -534,6 +535,7 @@ html {
 .txt-gradient-light {
   background: linear-gradient(60deg, #ffffff, #107aab);
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   letter-spacing: 1px;
 }

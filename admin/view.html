@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>BnB admin</title>
+</head>
+<body>
+
+
+    <div class="modal-z flex-column" id="modalz">
+        <div class="modal-content flex-column">
+            <span id="closez">&times;</span>
+            <h3 class="text-primary">Add New Category</h3>
+            <form action="/maridadi-online/admin/products/index.php" method="post" enctype="multipart/form-data">
+                <input type="text" placeholder="Category Name" name="category" required> <br> <br>
+                <input type="file" name="img" required> <br> <br>
+   
+                <button type="submit" class="btn-primary" name="add_category">Add Category</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal flex-column" id="modal">
+        <div class="modal-content flex-column">
+            <span id="closer" >&times;</span>
+            <h3>Create New Product</h3>
+            <form action="/maridadi-online/admin/products/index.php" class="grid-2" method="POST" enctype="multipart/form-data">
+                <div class="form-grp flex-column">
+                    <input type="text" name="name" id="" placeholder="Product Name" required>
+                    <input type="text" name="price" id="" placeholder="Price" required>
+                    <textarea name="desc" id="" maxlength="125"  placeholder="Product Description" required></textarea>
+                </div>
+                <div class="form-grp flex-column">
+                    <input type="file" name="image" id="" placeholder="Price" required>
+
+                    <select name="category_id" id="" required>
+                    
+                        <option value="">Category</option>
+
+                                                    <option value="5"> Watches </option>
+                                                    <option value="4"> Handbags </option>
+                                                    <option value="3"> shoes </option>
+                                                    <option value="2"> electronics </option>
+                                                    <option value="1"> clothes </option>
+                        
+                    </select>
+                    <select name="status" id="" required>
+                        <option value="">Availability</option>
+                        <option value="available">Available</option>
+                        <option value="unavailable">Unavailable</option>
+                    </select>
+                    <select name="seller_id" id="" required>
+
+                        <option value="">Supplier</option>
+
+                                                    <option value="1">Admin</option>
+                        
+                        </select>
+                    <button type="submit" name="submit" class="btn-primary">Create Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+        <section>
+                <style>
+
+                        .sidebar
+                        {
+                                width: 20%;
+                        }
+                        .sidebar *
+                        {
+                                margin: 2px 0;
+                        }
+
+
+                        .sidebar .txt-white
+                        {
+                                margin: 15px 0;
+                                font-size: 13px;
+                                width: 70%;
+                                padding-bottom: 10px;
+                                border-bottom: 1px solid #3333;
+                        }
+                </style>
+                <div class="sidebar" style="padding-top: 1%;">
+
+
+                        <h3 class="txt-primary"> Administrator </h3> <br>
+
+                        <a href="index.php" class="txt-white">Dashboard</a>
+                       
+                        <a href="#" class="txt-white">Manage Staff</a>
+
+                        <a href="#" class="txt-white">Manage Users</a>
+
+                        <a href="#" class="txt-white">Manage Hotels</a>
+
+                        <a href="#" class="txt-white">Manage Flights</a>
+
+                        <a href="#" class="txt-white">Manage Staff</a>
+                        <a href="#" class="txt-white">Manage Staff</a>
+
+
+
+                        <a href="#" class="btn-primary">Logout</a>
+                </div>
+
+                <div class="admin-main" style=" height: 100vh; width: 75%;">
+
+                        <div class="mini-bar">
+                                <a class="btn-red">Delete</a>
+                        </div>
+
+                        <div class="view"></div>
+                </div>
+        </section>
+
+
+        <script>
+
+                var trigger,closer,modal,close;
+
+                trigger = document.getElementById("trigger");
+                closer = document.getElementById("closer");
+                close_btn = document.getElementById("close");
+                modal= document.getElementById("modal");
+
+
+                trigger.onclick =()=>{
+                        modal.style.display = "flex";
+                }
+
+                closer.onclick =()=>{
+                        modal.style.display = "none";
+                }
+
+                var triggerz,closerz,modalz,closez;
+                triggerz = document.getElementById("triggerz");
+                closerz = document.getElementById("closez");
+                close_btnz = document.getElementById("close");
+                modalz = document.getElementById("modalz");
+
+                triggerz.onclick =()=>{
+                        modalz.style.display = "flex";
+                }
+
+                closerz.onclick =()=>{
+                        modalz.style.display = "none";
+                }
+
+        </script>
+</body>
+</html>
