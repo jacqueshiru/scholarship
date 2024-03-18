@@ -281,7 +281,7 @@ class Model implements PixelSequelORM
      * @return array or object
     */
 
-    public function Select(mixed $table, array $rows,mixed $order_by="", mixed $order, mixed $where=null, mixed $where_like=null, int $limit=null): array | object
+    public function Select(mixed $table, array $rows,  mixed $order ,mixed $order_by="", mixed $where=null, mixed $where_like=null, int $limit=null): array | object
     {
 
         if ($where == null && $where_like == null)

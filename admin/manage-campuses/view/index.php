@@ -1,19 +1,12 @@
 <?php
-        require ("../../../core/core.php");
+        include "../../../vendor/autoload.php";
+        require "../../../core/controller.php";
 
         if (isset($_GET['id']))
         {
                 $id = intval(base64_decode($_GET['id']));
-                
-                $res = new Reservation;
-                $hotel = new Hotel;
-                $user = new User;
-                $package = new Package;
 
-                $data = $res->get_data($id);
-                $hotel_data = $hotel->get_info($data->hotel_id);
-                $user_data = $user->return_user_data("id", intval($data->uid));
-                $package_data = $package->get_data($data->package_id);
+                $data = Base::getCampus(base64_decode($_GET['id']))[0];
 
         }
         else
@@ -61,19 +54,13 @@
 
                 <a href="../../" class="txt-white">Dashboard</a>
 
-                <a href="../../staff/" class="txt-white">Manage Staff</a>
+                <a href="../../manage-applications/" class="txt-white">Manage Applications</a>
 
-                <a href="../../users/" class="txt-white">Manage Users</a>
-                <a href="../../flight-packages/" class="txt-white">Payments</a>
+                <a href="../../manage-users/" class="txt-white">Manage Users</a>
 
-                <a href="../../flight-packages/" class="txt-white">Bookings</a>
+                <a href="../../manage-campuses/" class="txt-white">Manage Campuses</a>
 
-                <a href="../../hotels/" class="txt-white">Manage Hotels</a>
-
-                <a href="../../flights/" class="txt-white">Manage Flights</a>
-
-                <a href="../../hotel-packages/" class="txt-white">Hotel packages</a>
-                <a href="../../flight-packages/" class="txt-white">Flight Packages</a>
+                <a href="../../manage-scholarships/" class="txt-white">Manage Scholarships</a>
 
 
                         <a href="#" class="btn-primary">Logout</a>
@@ -82,18 +69,17 @@
                 <div class="admin-main" style=" height: 100vh; width: 75%;">
 
                         <div class="mini-bar">
+                                <h3>View Campus</h3>
                         </div>
 
                         <div class="view">
                                 <div>
-                                        <img src="../../../img/city.jpg" alt="" width="70%" height="80%" style="margin: 0 10%;">
+                                        <img src="../../../img/<?php echo $data->campus_logo ?>" alt="" width="70%" height="80%" style="margin: 0 10%;">
                                 </div>
 
                                 <div>
-                                        <h4 class="txt-primary"> <?php echo $hotel_data->name ?> </h4>
-                                        <h1 class="txt-primary txt-lower">$ <?php echo $package_data->price ?> </h1>
-                                        <small class="txt-secondary"> <?php echo $data->checkin_date ?> </small>
-                                        <small class="txt-secondary"> <?php echo $data->checkout_date ?> </small>
+                                        <h4 class="txt-primary"> <?php echo $data->campus_name ?> </h4>
+                                        <small class="txt-secondary"> Added <?php echo $data->date ?> </small>
 
 
                                 </div>

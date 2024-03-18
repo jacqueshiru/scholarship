@@ -1,16 +1,16 @@
 <?php
-        require ("../../../core/core.php");
+        include "../../../vendor/autoload.php";
+        require "../../../core/controller.php";
 
         if (isset($_GET['id']))
         {
                 $id = intval(base64_decode($_GET['id']));
-                
-                $flight = new Flight;
-                $data = $flight->get_data("id", $id);
 
-                if (isset($_POST['delete']))
+                $data = Base::getScholarship(base64_decode($_GET['id']))[0];
+
+                if (isset($_POST['submit']))
                 {
-                        $flight->delete($id);
+                        Base::DeleteScholarship($id);
                         header("Location: ../");
                 }
         }
@@ -25,21 +25,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../../css/style.css">
-        <title>BnB admin</title>
+        <title>Administrator</title>
 </head>
 <body>
 
-
-    <div class="modal-z flex-column" id="modalz">
-        <div class="modal-content flex-column" style="width: 40%; height: 50%;">
-            <span id="closez" class="flex-column">&times;</span>
-            <h3 class="text-primary">Are you sure? This action is irreversible </h3> <br>
-
-        <form action="<?php echo $_SERVER['PHP_SELF'] ?>?id=<?php echo $_GET['id']?>" method="post">
-                <button name="delete" type="submit" class="btn-red">Delete </button>
-        </form>
-        </div>
-    </div>
 
         <section>
                 <style>
@@ -50,9 +39,9 @@
                         }
                         .sidebar *
                         {
-
                                 margin: 2px 0;
                         }
+
 
                         .sidebar .txt-white
                         {
@@ -66,23 +55,18 @@
                 <div class="sidebar" style="padding-top: 1%;">
 
 
-                        <h3 class="txt-primary"> Administrator </h3> <br>
+                <h3 class="txt-primary"> Administrator </h3> <br>
 
-                        <a href="../../" class="txt-white">Dashboard</a>
 
-                        <a href="../../staff/" class="txt-white">Manage Staff</a>
+                <a href="../../" class="txt-white">Dashboard</a>
 
-                        <a href="../../users/" class="txt-white">Manage Users</a>
-                        <a href="../../flight-packages/" class="txt-white">Payments</a>
+                <a href="../../manage-applications/" class="txt-white">Manage Applications</a>
 
-                        <a href="../../flight-packages/" class="txt-white">Bookings</a>
+                <a href="../../manage-users/" class="txt-white">Manage Users</a>
 
-                        <a href="../../hotels/" class="txt-white">Manage Hotels</a>
+                <a href="../../manage-campuses/" class="txt-white">Manage Campuses</a>
 
-                        <a href="../../flights/" class="txt-white">Manage Flights</a>
-
-                        <a href="../../hotel-packages/" class="txt-white">Hotel packages</a>
-                        <a href="../../flight-packages/" class="txt-white">Flight Packages</a>
+                <a href="../../manage-scholarships/" class="txt-white">Manage Scholarships</a>
 
 
                         <a href="#" class="btn-primary">Logout</a>
@@ -91,19 +75,22 @@
                 <div class="admin-main" style=" height: 100vh; width: 75%;">
 
                         <div class="mini-bar">
-                                <a class="btn-red" id="triggerz">Delete</a>
-                        </div>
+                                <form action="<?php echo $_SERVER['PHP_SELF'] ?>?id=<?php echo $_GET['id'] ?>" method="POST">
+
+                                        <button type="submit" name="submit" class="btn-red">Delete</button>
+
+                                </form> <br>
+                        </div> <br>
 
                         <div class="view">
                                 <div>
-                                        <img src="../../../img/city.jpg" alt="" width="70%" height="80%" style="margin: 0 10%;">
+                                        <img src="../../../img/<?php echo Base::getCampus($data->campus_id)[0]->campus_logo; ?>" alt="" width="70%" height="80%" style="margin: 0 10%;">
                                 </div>
 
                                 <div>
-                                        <h4 class="txt-primary"> <?php echo $data->from_p ?> -  <?php echo $data->to_p ?> </h4>
-                                        <h1 class="txt-primary txt-lower">$ <?php echo $data->std_price ?> </h1>
-                                        <small class="txt-secondary"> Travelling on <?php echo $data->flight_date ?> </small>
-
+                                        <h1 class="txt-primary"> <?php echo $data->course ?> </h1>
+                                        <h4 class="txt-secondary txt-lower"> <?php echo $data->course_type ?> </h4>
+                                        <small class="txt-secondary"> <?php echo $data->description ?> </small>
 
                                 </div>
                         </div>

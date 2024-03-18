@@ -5,7 +5,7 @@
         {
                 header("location: ../login");
         }
-        
+
         $user = new User;
         $data = $user->fetchAll("users");
 
