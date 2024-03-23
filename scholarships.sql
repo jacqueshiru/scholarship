@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 18, 2024 at 04:48 PM
+-- Generation Time: Mar 23, 2024 at 11:31 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -120,7 +120,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone`, `gender`, `date`) VALUES
-(4, 'Seb', 'astian@gmail.com', '$2y$10$1jKoN2rFXSwNihxQ9NhTdeRl8hLRq7Ir3Abi.jQIf0qLhcDQttwpW', '45554545', 'm', '2024-03-18 18:26:02.917546');
+(4, 'Sebastian Muchui', 'astian@gmail.com', '$2y$10$1jKoN2rFXSwNihxQ9NhTdeRl8hLRq7Ir3Abi.jQIf0qLhcDQttwpW', '45554545', 'm', '2024-03-18 18:26:02.917546');
 
 --
 -- Indexes for dumped tables
@@ -182,7 +182,7 @@ ALTER TABLE `scholarships`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
