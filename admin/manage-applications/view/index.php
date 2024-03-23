@@ -1,31 +1,30 @@
 <?php
-        require ("../../../core/core.php");
+        require_once "../../../vendor/autoload.php";
+        require "../../../core/controller.php";
 
         if (isset($_GET['id']))
         {
                 $id = intval(base64_decode($_GET['id']));
-                
-                $flight = new Package;
-                $data = $flight->get_data($id);
 
-                if (isset($_POST['delete']))
+                $data = Base::GetApplication(($id))[0];
+                $campus = Base::getCampus(Base::getScholarship($data->scholarship_id)[0]->campus_id )[0];
+                $user = Base::getUser($data->user_id)[0];
+
+                if (isset($_POST['submit']))
                 {
-                        $flight->delete($id);
-                        header("Location: ../");
+                        Base::DeleteScholarship($id);
+                        header("Location:../");
                 }
         }
-        else
-        {
-                header("Location: ../");
-        }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../../css/style.css">
-        <title>BnB admin</title>
+        <title>admin</title>
 </head>
 <body>
 
@@ -67,45 +66,44 @@
                 <div class="sidebar" style="padding-top: 1%;">
 
 
-                <h3 class="txt-primary"> Administrator </h3> <br>
-
-                <a href="../../" class="txt-white">Dashboard</a>
-
-                <a href="../../staff/" class="txt-white">Manage Staff</a>
-
-                <a href="../../users/" class="txt-white">Manage Users</a>
-                <a href="../../flight-packages/" class="txt-white">Payments</a>
-
-                <a href="../../flight-packages/" class="txt-white">Bookings</a>
-
-                <a href="../../hotels/" class="txt-white">Manage Hotels</a>
-
-                <a href="../../flights/" class="txt-white">Manage Flights</a>
-
-                <a href="../../hotel-packages/" class="txt-white">Hotel packages</a>
-                <a href="../../flight-packages/" class="txt-white">Flight Packages</a>
+                        <h3 class="txt-primary"> Administrator </h3> <br>
 
 
-                        <a href="#" class="btn-primary">Logout</a>
+                        <a href="../../" class="txt-white">Dashboard</a>
+
+                        <a href="../../manage-applications/" class="txt-white">Manage Applications</a>
+
+                        <a href="../../manage-users/" class="txt-white">Manage Users</a>
+
+                        <a href="../../manage-campuses/" class="txt-white">Manage Campuses</a>
+
+                        <a href="../../manage-scholarships/" class="txt-white">Manage Scholarships</a>
+
                 </div>
 
                 <div class="admin-main" style=" height: 100vh; width: 75%;">
 
                         <div class="mini-bar">
-                                <a class="btn-red" id="triggerz">Delete</a>
+                                <!-- <a class="btn-red" id="triggerz">Delete</a> -->
                         </div>
 
                         <div class="view">
                                 <div>
-                                        <img src="../../../img/city.jpg" alt="" width="70%" height="80%" style="margin: 0 10%;">
+                                        <img src="../../../img/<?php echo $campus->campus_logo ?>" alt="" width="70%" height="80%" style="margin: 0 10%;">
                                 </div>
 
                                 <div>
-                                        <h4 class="txt-primary"> <?php echo $data->name ?> </h4>
-                                        <h1 class="txt-primary txt-lower">$ <?php echo $data->price ?> </h1>
-                                        <small class="txt-secondary"> <?php echo $data->details ?> </small>
-
-
+                                        <h1 class="txt-primary"> <?php echo Base::getUser($data->user_id)[0]->name ?> </h1>
+                                        <h4 class="txt-primary txt-lower"> <?php echo Base::getUser($data->user_id)[0]->email ?> </h4>
+                                        <small class="txt-primary"> <?php echo Base::getCampus(Base::getScholarship($data->scholarship_id)[0]->campus_id)[0]->campus_name ?> </small>
+                                        <small class="txt-primary"> <?php echo Base::getScholarship($data->scholarship_id)[0]->course ?>  </small>
+                                        <h2 class="txt-secondary">Documents</h2>
+                                        <div class="grid-4">
+                                                <a href="../../../uploads/<?php echo $data->results ?>" class="btn-primary" download="../../../uploads/<?php echo $data->results ?>">Grades</a>
+                                                <a href="../../../uploads/<?php echo $data->proof ?>" class="btn-primary" download="../../../uploads/<?php echo $data->proof ?>">proof of need</a>
+                                                <a href="../../../uploads/<?php echo $data->personal_statement ?>" class="btn-primary" download="../../../uploads/<?php echo $data->personal_statement ?>">personal statement</a>
+                                                <a href="../../../uploads/<?php echo $data->abilities ?>" class="btn-primary" download="../../../uploads/<?php echo $data->abilities ?>">abilities</a>
+                                        </div>
                                 </div>
                         </div>
                 </div>

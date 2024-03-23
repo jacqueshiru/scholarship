@@ -1,4 +1,12 @@
+<?php
 
+        require_once "../../vendor/autoload.php";
+        require "../../core/controller.php";
+
+        $applications = Base::GetApplications();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,12 +67,34 @@
 
                         <table>
                                 <thead>
-                                        <th>Name</th>
+                                        <th>Student Name</th>
                                         <th>Email</th>
-                                        <th>Actions</th>
+                                        <th>Course</th>
+                                        <th>Campus</th>
+                                        <th></th>
                                 </thead>
 
                                 <tbody>
+
+                                        <?php
+
+                                                foreach ($applications as $application)
+                                                {
+                                                        $user = Base::getUser($application->user_id)[0];
+                                                        $scholarship = Base::getScholarship($application->scholarship_id)[0];
+                                                        $campus = Base::getCampus($scholarship->campus_id)[0];
+                                                        $encoded_id = base64_encode($application->id);
+                                                        echo "<tr>";
+                                                        echo "<td> $user->name </td>";
+                                                        echo "<td> $user->email </td>";
+                                                        echo "<td> $scholarship->course </td>";
+                                                        echo "<td> $campus->campus_name </td>";
+
+                                                        echo "<td> <a href='./view?id=$encoded_id' class='btn-primary'>View</a> </td>";
+                                                        echo "</tr>";
+                                                }
+
+                                        ?>
 
 
                                 </tbody>

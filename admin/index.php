@@ -1,3 +1,17 @@
+<?php
+
+        require_once "../vendor/autoload.php";
+        require "../core/controller.php";
+
+        if ($_SESSION['admin'] != true)
+        {
+                header("Location: ./login/");
+        }
+        $users_count = count( json_decode( (string) Base::AllUsers()));
+        $applications_count = count(Base::GetApplications());
+        $scholarships_count = count(Base::AllScholarships());
+        $campuses_count = count(Base::AllCampuses());
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +60,7 @@
                         <a href="./manage-scholarships/" class="txt-white">Manage Scholarships</a>
 
 
-                        <a href="#" class="btn-primary">Logout</a>
+                        <a href="./logout/" class="btn-primary">Logout</a>
                 </div>
 
                 <div class="admin-main" style=" height: 100vh; width: 75%;">
@@ -54,25 +68,25 @@
 
                                 <div class="card">
                                         <p> Total Users </p>
-                                        <h1 class="txt-primary"> 4 </h1>
+                                        <h1 class="txt-primary"> <?php echo $users_count  ?> </h1>
                                         <a href="./manage-users" class="btn-secondary">View</a>
                                 </div>
 
                                 <div class="card">
                                         <p> Total Applications</p>
-                                        <h1 class="txt-primary">6</h1>
+                                        <h1 class="txt-primary"><?php echo $applications_count  ?></h1>
                                         <a href="./manage-applications/" class="btn-secondary">View</a>
                                 </div>
 
                                 <div class="card">
                                         <p> Total Scholarships</p>
-                                        <h1 class="txt-primary">7</h1>
+                                        <h1 class="txt-primary"><?php echo $scholarships_count  ?></h1>
                                         <a href="./manage-scholarships/" class="btn-secondary">Add New</a>
                                 </div>
 
                                 <div class="card">
                                         <p> Registered Campuses </p>
-                                        <h1 class="txt-primary">4</h1>
+                                        <h1 class="txt-primary"><?php echo $campuses_count  ?></h1>
                                         <a href="./manage-campuses/" class="btn-secondary">Add New</a>
                                 </div>
 

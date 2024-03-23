@@ -3,7 +3,7 @@
 /** Make sure to append the vendor file before using this */
 use PixelSequel\Model\Model;
 use PixelSequel\Schema\Schema;
-
+session_start();
 /**
  * Edugrant core backend
  * Written by Jacqueline Wanjiru Macharia 
@@ -315,6 +315,51 @@ final class Base
             ]
         );
     }
+
+    public static function GetApplication($id)
+    {
+        new Model (
+            dbname: "scholarships"
+        );
+
+        $application = Model::All (
+            table: "applications",
+            where: [
+                "id" => $id
+            ],
+            limit: 1
+        );
+
+        return json_decode( (string) $application);
+    }
+
+
+    public static function GetApplications()
+    {
+        new Model (
+            dbname: "scholarships"
+        );
+
+        $applications = Model::All (
+            table: "applications"
+        );
+
+        return json_decode( (string) $applications);
+    }
+
+    public static function DeleteApplication($id)
+    {
+        new Model (
+            dbname: "scholarships"
+        );
+
+        Model::Delete (
+            table: "applications",
+            param_t: "id",
+            param_n: $id
+        );
+    }
+
 }
 
 
